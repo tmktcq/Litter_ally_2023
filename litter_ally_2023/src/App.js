@@ -1,20 +1,21 @@
 //import logo from './logo.svg';
 import React from 'react'
 import './App.css';
+import initMap from './index.js';
 import Home from './index.js';
-
-
 
 const activities = [
   {
     id: 1,
     timestamp: new Date(),
-    description: "User 1 liked User 2's post",
+    description: "The Boy Scouts have discovered trash next to havener center!",
+    location: "its in the air",
   },
   {
     id: 2,
     timestamp: new Date(),
     description: "User 3 commented on User 4's post",
+    location: "i uhungry",
   },
   // ...
 ];
@@ -46,6 +47,7 @@ function Activity({ activity }) {
     <div style={activityStyle}>
       <p style={timestampStyle}>{activity.timestamp.toISOString()}</p>
       <p style={descriptionStyle}>{activity.description}</p>
+      <p style={descriptionStyle}>{activity.location}</p>
     </div>
   );
 }
@@ -61,7 +63,7 @@ function ActivityFeed({ activities }) {
     
     <div style = {activity_feed}>
       {activities.map((activity) => (
-        <Activity key={activity.id} activity={activity} />
+        <Activity key={activity.id} activity={activity} location={activity.location} />
       ))}
     </div>
   );
