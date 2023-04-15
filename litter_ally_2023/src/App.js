@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import React from 'react'
 import './App.css';
+import Home from './index.js';
 
 
 
@@ -70,18 +71,26 @@ class App extends React.Component {
   
   render() {
     return(
-    <div className='container'>
-      <div className='column'>
-        
-      </div>
-      <div className='column'>
+      <div className='parentContainer'>
+        <div className='topbar'>
+            <p> deez nuts</p>
+        </div>
+        <div className='columnContainer'>
+          
+          <div className='column'>
+            {/* <Home /> */}
+          </div>
+          
+          <div className='column'>
+            <Home />
+          </div>
 
+          <div className='column'>
+            <ActivityFeed activities={activities}/>
+          </div>
+
+        </div>
       </div>
-      <div className='column'>
-        <ActivityFeed activities={activities} className="gorightbi"/>
-      </div>
-        
-    </div>
     )
     }
     }
