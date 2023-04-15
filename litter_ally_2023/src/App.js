@@ -1,24 +1,89 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 
-function App() {
+
+
+const activities = [
+  {
+    id: 1,
+    timestamp: new Date(),
+    description: "User 1 liked User 2's post",
+  },
+  {
+    id: 2,
+    timestamp: new Date(),
+    description: "User 3 commented on User 4's post",
+  },
+  // ...
+];
+
+function Activity({ activity }) {
+  const timestampStyle = {
+    color: "#999",
+    fontSize: "14px",
+  };
+
+  const descriptionStyle = {
+    fontSize: "18px",
+    fontWeight: "bold",
+  };
+
+  const activityStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start", 
+    justifyContent: "right",
+    marginBottom: "16px",
+    padding: "16px",
+    backgroundColor: "#f5f5f5",
+    borderRadius: "8px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+    width: "500px"
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-           <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-      </header>
+    <div style={activityStyle}>
+      <p style={timestampStyle}>{activity.timestamp.toISOString()}</p>
+      <p style={descriptionStyle}>{activity.description}</p>
     </div>
   );
 }
+
+function ActivityFeed({ activities }) {
+  const activity_feed = {
+    display: "flex-end",
+    flexDirection: "column",
+    alignItems: "center"
+    // marginLeft: "auto"
+  };
+  return (
+    
+    <div style = {activity_feed}>
+      {activities.map((activity) => (
+        <Activity key={activity.id} activity={activity} />
+      ))}
+    </div>
+  );
+}
+
+class App extends React.Component {
+  
+  render() {
+    return(
+    <div className='container'>
+      <div className='column'>
+        
+      </div>
+      <div className='column'>
+
+      </div>
+      <div className='column'>
+        <ActivityFeed activities={activities} className="gorightbi"/>
+      </div>
+        
+    </div>
+    )
+    }
+    }
 
 export default App;
